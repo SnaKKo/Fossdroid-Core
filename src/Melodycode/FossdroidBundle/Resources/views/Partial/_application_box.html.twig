@@ -1,0 +1,25 @@
+<div class="fd-application_box mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand" {% if application.icon %}style="background: url(/images/icons/{{ application.icon }}) top 12% right 12% no-repeat {{ application.primaryColor|default('#F5F5F5') }};"{% endif %}>
+        <h5 class="mdl-card__title-text {% if isDark(application.primaryColor|default('#F5F5F5')) %}mdl-color-text--white{% else %}mdl-color-text--grey-900{% endif %}"><a href="{{ path('application', {'slug': application.slug}) }}" title="{{ application.name }}: {{ application.summary }}">{{ application.name }}</a></h5>
+    </div>
+
+    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+        <a href="{{ path('application', {'slug': application.slug}) }}" title="{{ application.name }}: {{ application.summary }}">{{ application.summary|length > 30 ? application.summary|slice(0, 30) ~ '...' : application.summary  }}</a>
+    </div>
+
+    <div class="mdl-card__actions mdl-card--border">
+        <a href="{{ path('application', {'slug': application.slug}) }}" title="{{ application.name }}: {{ application.summary }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View app</a>
+    </div>
+
+    {% if application.createdAt|date('U') > "-7 days"|date("U") %}
+        <div class="fd-badge mdl-color--white mdl-shadow--2dp">
+            <div id="fd-badge_{{application.slug }}" class="icon material-icons">add</div>
+            <div class="mdl-tooltip" for="fd-badge_{{application.slug }}">Added this week</div>
+        </div>
+    {% elseif application.updatedAt|date('U') > "-7 days"|date("U") %}
+        <div class="fd-badge mdl-color--white mdl-shadow--2dp">
+            <div id="fd-badge_{{application.slug }}" class="icon material-icons">refresh</div>
+            <div class="mdl-tooltip" for="fd-badge_{{application.slug }}">Updated this week</div>
+        </div>
+    {% endif %}
+</div>

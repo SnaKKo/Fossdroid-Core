@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<!-- stylesheet -->
+        <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.2.1/material.red-pink.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+        <!-- seo -->
+        <title>{% block title %}Fossdroid: Free and open source Android apps{% endblock %}</title>
+      
+        <!-- viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% block head %}{% endblock %}
+    </head>
+    
+    <body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="fd-breadcrumb mdl-layout-title">
+                        {% block breadcrumb %}{% endblock %}
+                    </span>
+
+                    <div class="mdl-layout-spacer"></div>
+
+                    {% block search %}
+                        {{ render(controller("MelodycodeFossdroidBundle:Widget:search")) }}
+                    {% endblock %}
+                </div>
+            </header>
+
+            {% block nav_categories %}
+                {{ render(controller("MelodycodeFossdroidBundle:Widget:categories")) }}
+            {% endblock %}
+
+            <main class="mdl-layout__content">      
+                {% block body %}{% endblock %}
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo">
+                            Fossdroid Core is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a> by <a href="https://melodycode.com/">Daniele Simonin</a>
+                        </div>
+                    </div>
+                </footer>
+            </main>
+        </div>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- javascript -->
+        <script src="//storage.googleapis.com/code.getmdl.io/1.2.1/material.min.js"></script>
+    </body>
+</html>

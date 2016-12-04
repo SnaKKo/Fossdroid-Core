@@ -1,0 +1,39 @@
+{% extends 'MelodycodeFossdroidBundle::base.html.twig' %}
+
+{% block title %}Search results for "{{ q }}" - Free and open source Android apps on Fossdroid{% endblock %}
+
+{% block breadcrumb %}
+    Search &rsaquo; Results for "{{ q }}"
+{% endblock %}
+
+{% block search %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:search", { 'q': q })) }}
+{% endblock %}
+
+{% block nav_categories %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:categories")) }}
+{% endblock %}
+
+{% block body %}
+    {% if applications %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <h3 class="fd-title">
+                    Search results for "{{ q }}" ({{ applications|length }})
+                </h3>
+            </div>
+                
+            {% for application in applications %}
+                {{ include("MelodycodeFossdroidBundle:Partial:_application_box.html.twig") }}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <h3 class="fd-title">
+                    Sorry, no results found <div class="icon material-icons">mood_bad</div>
+                </h3>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

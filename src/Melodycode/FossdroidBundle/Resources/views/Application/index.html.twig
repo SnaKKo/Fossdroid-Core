@@ -1,0 +1,81 @@
+{% extends 'MelodycodeFossdroidBundle::base.html.twig' %}
+
+{% block title %}{{ application.name }} - {{ application.summary }}{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ path('category', {'slug': application.category.slug}) }}">{{ application.category.name }}</a> &rsaquo; {{ application.name }}
+{% endblock %}
+
+{% block nav_categories %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:categories", { 'slug_selected': application.category.slug })) }}
+{% endblock %}
+
+{% block body %}
+    <div id="fd-section_container">
+        <section class="fd-section mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="fd-section_header mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone" {% if application.icon %}style="background: url(/images/icons/{{ application.icon }}) center center no-repeat {{ application.primaryColor|default('#F5F5F5') }};"{% endif %}></div>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__supporting-text mdl-color-text--grey-900">
+                    <h4>{{ application.name }}</h4>
+                    <div class="mdl-color-text--grey-600">{{ application.summary }}</div>
+                    <div class="fd-application-info mdl-color-text--grey-800">
+                        <strong>Version</strong>: {{ application.version }}<br/>
+                        <strong>Added on</strong>: {{ application.createdAt|date('d-m-Y') }}<br/>
+                        <strong>Last update</strong>: {{ application.updatedAt|date('d-m-Y') }}<br/>
+                    </div>
+                </div>
+            </div>
+                    
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white" id="fd-application_menu">
+                <i class="material-icons">more_vert</i>
+            </button>
+
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="fd-application_menu">
+                <li class="mdl-menu__item" {% if not application.site %}disabled{% endif %}>
+                    {% if application.site %}<a rel="nofollow" href="{{ application.site }}">{% endif %}
+                        Site
+                        {% if application.site %}</a>{% endif %}
+                </li>
+                <li class="mdl-menu__item">
+                    <a rel="nofollow" href="{{ remote_browser_app }}{{ application.id }}">F-droid</a>
+                </li>
+                <li class="mdl-menu__item" {% if not application.source %}disabled{% endif %}>
+                    {% if application.source %}<a rel="nofollow" href="{{ application.source }}">{% endif %}
+                        Source{% if application.license %} ({{ application.license }}){% endif %}
+                        {% if application.source %}</a>{% endif %}
+                </li>
+                <li class="mdl-menu__item" {% if not application.tracker %}disabled{% endif %}>
+                    {% if application.tracker %}<a rel="nofollow" href="{{ application.tracker }}">{% endif %}
+                        Tracker
+                        {% if application.tracker %}</a>{% endif %}
+                </li>
+                <li class="mdl-menu__item" {% if not application.donate %}disabled{% endif %}>
+                    {% if application.donate %}<a rel="nofollow" href="{{ application.donate }}">{% endif %}
+                        Donate
+                        {% if application.donate %}</a>{% endif %}
+                </li>
+                <li class="mdl-menu__item">
+                    <a rel="nofollow" href="{{ path('application_download', {'slug': application.slug}) }}">Download</a>
+                </li>
+                <li class="mdl-menu__item">
+                    <a rel="nofollow" href="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://fossdroid.com{{ path('application_download', {'slug': application.slug}) }}">QR Code</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="fd-section mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text">
+                    <h5>Description</h5>
+                    {{ application.description|raw }}
+                </div>
+            </div>
+        </section>
+        
+        <a title="Download" rel="nofollow" href="{{ path('application_download', {'slug': application.slug}) }}" id="fd-download-app" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent">
+            <i class="material-icons" role="presentation">file_download</i>
+            <span class="visuallyhidden">Download</span>
+        </a>
+            
+    </div>    
+{% endblock %}

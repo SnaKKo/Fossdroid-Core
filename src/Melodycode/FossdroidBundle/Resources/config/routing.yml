@@ -1,0 +1,27 @@
+homepage:
+    path: /
+    defaults: { _controller: MelodycodeFossdroidBundle:Homepage:index }
+category:
+    path: /c/{slug}/
+    defaults: { _controller: MelodycodeFossdroidBundle:Category:index }
+category_whats_new:
+    path: /c/{slug}/whats_new.html
+    defaults: { _controller: MelodycodeFossdroidBundle:Category:whatsnew }
+search_hub:
+    path: /s.html
+    defaults: { _controller: MelodycodeFossdroidBundle:Search:hub }
+search:
+    path: /s/{q}.html
+    defaults: { _controller: MelodycodeFossdroidBundle:Search:index }
+application:
+    path: /a/{slug}.html
+    defaults: { _controller: MelodycodeFossdroidBundle:Application:index }
+application_download:
+    path: /a/{slug}.apk
+    defaults: { _controller: MelodycodeFossdroidBundle:Application:download }
+s:
+    path: /s/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: homepage
+        permanent: true

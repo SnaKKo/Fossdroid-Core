@@ -1,0 +1,19 @@
+Melodycode\FossdroidBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        slug:
+            id: true
+            type: string
+            autoincrement: false
+    fields:
+        name:
+            type: string
+            unique: true
+        icon:
+            type: string
+        is_published:
+            type: boolean
+        count:
+            type: integer
+            nullable: true

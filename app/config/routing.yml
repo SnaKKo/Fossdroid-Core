@@ -1,0 +1,3 @@
+melodycode_fossdroid:
+    resource: "@MelodycodeFossdroidBundle/Resources/config/routing.yml"
+    prefix:   /

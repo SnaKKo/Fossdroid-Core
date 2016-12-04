@@ -1,0 +1,9 @@
+{% extends 'MelodycodeFossdroidBundle::base.html.twig' %}
+
+{% block breadcrumb %}
+    Free and open source Android apps
+{% endblock %}
+
+{% block body %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:whatsnew")) }}
+{% endblock %}

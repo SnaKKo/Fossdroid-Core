@@ -1,0 +1,25 @@
+{% extends 'MelodycodeFossdroidBundle::base.html.twig' %}
+
+{% block title %}What's new in "{{ category.name }}" - Free and open source Android apps on Fossdroid{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ path('category', {'slug': category.slug}) }}">{{ category.name }}</a> &rsaquo; What's new
+{% endblock %}
+
+{% block nav_categories %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:categories", { 'slug_selected': category.slug })) }}
+{% endblock %}
+
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <h3 class="fd-title">
+                What's new in "{{ category.name }}"
+            </h3>
+        </div>
+
+        {% for application in applications %}
+            {{ include("MelodycodeFossdroidBundle:Partial:_application_box.html.twig") }}
+        {% endfor %}
+    </div>
+{% endblock %}

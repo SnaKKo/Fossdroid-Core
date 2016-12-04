@@ -1,0 +1,12 @@
+<div class="fd-navigation mdl-layout__drawer">
+    <span class="mdl-layout-title mdl-color--primary mdl-color-text--white">
+        <a href="{{ path('homepage') }}"><div class="icon material-icons">android</div> Fossdroid</a>
+    </span>
+    <nav class="mdl-navigation mdl-color--white">
+        {% for category in categories %}
+            <a class="{% if category.slug == slug_selected %}mdl-color--accent mdl-color-text--white{% endif %} mdl-navigation__link" href="{{ path('category', {'slug': category.slug}) }}">
+                <i class="material-icons">{{ category.icon }}</i> {{ category.name }}
+            </a>
+        {% endfor %}
+    </nav>
+</div>

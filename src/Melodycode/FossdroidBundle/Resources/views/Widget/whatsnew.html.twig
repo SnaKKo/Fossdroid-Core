@@ -1,0 +1,22 @@
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+        <h3 class="fd-title">
+            {% if category_slug %}<a href="{{ path('category_whats_new', {'slug': category_slug}) }}">{% endif %}What's new{% if category_slug %}</a>{% endif %}
+            {% if category_slug %}<a href="{{ path('category_whats_new', {'slug': category_slug}) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">See more</a>{% endif %}    
+        </h3>
+    </div>
+
+    {% for application in applications %}
+        {{ include("MelodycodeFossdroidBundle:Partial:_application_box.html.twig") }}
+    {% endfor %}
+
+    {% if category_slug %}
+        <div class="fd-application_more mdl-card mdl-shadow--2dp mdl-color--accent">
+            <div class="mdl-card__title mdl-card--expand">
+                <h5 class="mdl-color-text--white">
+                    <a href="{{ path('category_whats_new', {'slug': category_slug}) }}">See more</a>
+                </h5>
+            </div>
+        </div>
+    {% endif %}
+</div>

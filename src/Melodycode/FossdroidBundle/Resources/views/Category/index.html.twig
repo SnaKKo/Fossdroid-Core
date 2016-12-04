@@ -1,0 +1,15 @@
+{% extends 'MelodycodeFossdroidBundle::base.html.twig' %}
+
+{% block title %}{{ category.name }} - Free and open source Android apps on Fossdroid{% endblock %}
+
+{% block breadcrumb %}
+    {{ category.name }}
+{% endblock %}
+
+{% block nav_categories %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:categories", { 'slug_selected': category.slug })) }}
+{% endblock %}
+
+{% block body %}
+    {{ render(controller("MelodycodeFossdroidBundle:Widget:whatsnew", { 'slug_selected': category.slug })) }} 
+{% endblock %}

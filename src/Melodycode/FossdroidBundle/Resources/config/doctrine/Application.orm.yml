@@ -1,0 +1,62 @@
+Melodycode\FossdroidBundle\Entity\Application:
+    type: entity
+    repositoryClass: Melodycode\FossdroidBundle\Entity\ApplicationRepository
+    table: application
+    id:
+        id:
+            type: string
+            id: true
+    fields:
+        slug:
+            type: string
+            unique: true
+        name:
+            type: string
+        summary:
+            type: text
+        description:
+            type: text
+        site:
+            type: text
+            nullable: true
+        source:
+            type: text
+            nullable: true
+        tracker:
+            type: text
+            nullable: true
+        donate:
+            type: text
+            nullable: true
+        icon:
+            type: string
+            nullable: true
+        primary_color:
+            type: string
+            nullable: true
+        secondary_color:
+            type: string
+            nullable: true
+        tertiary_color:
+            type: string
+            nullable: true            
+        apk:
+            type: string
+        version:
+            type: string
+        license:
+            type: string
+            nullable: true
+        is_published:
+            type: boolean
+        created_at:
+            type: date
+        updated_at:
+            type: date
+    manyToOne:
+        category:
+          targetEntity: Melodycode\FossdroidBundle\Entity\Category
+          joinColumn:
+            name: category_slug
+            referencedColumnName: slug
+          

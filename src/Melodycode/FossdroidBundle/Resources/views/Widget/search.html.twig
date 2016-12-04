@@ -1,0 +1,10 @@
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    <form class="fd-search" role="search" method="get" action="{{ path('search_hub') }}">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="search_term">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" value="{{ q }}" name="q" id="search_term" pattern=".{3,}" required/>
+        </div>
+    </form>
+</div>
