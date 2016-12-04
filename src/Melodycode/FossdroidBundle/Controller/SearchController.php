@@ -7,22 +7,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SearchController extends Controller {
 
-    public function hubAction() {
+    public function indexAction() {
         $q = $this->getRequest()->query->get('q');
-
-        $utils = $this->get('utils');
-        $terms = $utils->terms($q);
-
-        $q = implode(' ', $terms);
-
-        if (empty($terms)) {
-            return new RedirectResponse($this->generateUrl('homepage'));
-        }
-
-        return new RedirectResponse($this->generateUrl('search', array('q' => $q)));
-    }
-
-    public function indexAction($q) {
+        
         $utils = $this->get('utils');
         $terms = $utils->terms($q);
 

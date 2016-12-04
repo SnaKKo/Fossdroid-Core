@@ -7,11 +7,8 @@ category:
 category_whats_new:
     path: /c/{slug}/whats_new.html
     defaults: { _controller: MelodycodeFossdroidBundle:Category:whatsnew }
-search_hub:
-    path: /s.html
-    defaults: { _controller: MelodycodeFossdroidBundle:Search:hub }
 search:
-    path: /s/{q}.html
+    path: /s.html
     defaults: { _controller: MelodycodeFossdroidBundle:Search:index }
 application:
     path: /a/{slug}.html
