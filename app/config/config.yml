@@ -97,7 +97,7 @@ parameters:
     # how many apps to see
     melodycode_fossdroid.widget_limit: 20
     
-    # category icons (http://fontawesome.io/icons/)
+    # category icons (https://material.io/icons/)
     melodycode_fossdroid.category_icon:
         wallpaper: "wallpaper"
         system: "settings"
@@ -120,5 +120,5 @@ parameters:
         graphics: "brush"
         sports-health: "directions_bike"
         
-    # default category icon (http://fontawesome.io/icons/)
+    # default category icon (https://material.io/icons/)
     melodycode_fossdroid.category_icon_default: "folder"
