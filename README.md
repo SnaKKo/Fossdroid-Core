@@ -18,7 +18,7 @@ This repo is the open source version of [Fossdroid.com](https://fossdroid.com).
 
 1. Clone repo
 2. Create database
-3. Install dependencies:
+3. Install dependencies and change the "melodycode_fossdroid.local_path_icons" attribute:
     ```
     composer install
     ```
@@ -26,11 +26,7 @@ This repo is the open source version of [Fossdroid.com](https://fossdroid.com).
     ```
     php app/console doctrine:schema:create
     ```
-5. Edit config updating the "melodycode_fossdroid.local_path_icons" attribute:
-    ```
-    nano app/config/config.yml
-    ```
-6. Sync:
+5. Sync:
     ```
     php app/console fossdroid:sync
     ```
