@@ -12,7 +12,7 @@ echo '> PHP is using the following php.ini file:'.PHP_EOL;
 if ($iniPath) {
     echo_style('green', '  '.$iniPath);
 } else {
-    echo_style('warning', '  WARNING: No configuration file (php.ini) used by PHP!');
+    echo_style('yellow', '  WARNING: No configuration file (php.ini) used by PHP!');
 }
 
 echo PHP_EOL.PHP_EOL;
@@ -21,7 +21,6 @@ echo '> Checking Symfony requirements:'.PHP_EOL.'  ';
 
 $messages = array();
 foreach ($symfonyRequirements->getRequirements() as $req) {
-    /** @var $req Requirement */
     if ($helpText = get_error_message($req, $lineSize)) {
         echo_style('red', 'E');
         $messages['error'][] = $helpText;
@@ -80,7 +79,7 @@ function get_error_message(Requirement $requirement, $lineSize)
         return;
     }
 
-    $errorMessage  = wordwrap($requirement->getTestMessage(), $lineSize - 3, PHP_EOL.'   ').PHP_EOL;
+    $errorMessage = wordwrap($requirement->getTestMessage(), $lineSize - 3, PHP_EOL.'   ').PHP_EOL;
     $errorMessage .= '   > '.wordwrap($requirement->getHelpText(), $lineSize - 5, PHP_EOL.'   > ').PHP_EOL;
 
     return $errorMessage;
@@ -121,8 +120,8 @@ function echo_block($style, $title, $message)
     echo PHP_EOL.PHP_EOL;
 
     echo_style($style, str_repeat(' ', $width).PHP_EOL);
-    echo_style($style, str_pad(' ['.$title.']',  $width, ' ', STR_PAD_RIGHT).PHP_EOL);
-    echo_style($style, str_pad($message,  $width, ' ', STR_PAD_RIGHT).PHP_EOL);
+    echo_style($style, str_pad(' ['.$title.']', $width, ' ', STR_PAD_RIGHT).PHP_EOL);
+    echo_style($style, str_pad($message, $width, ' ', STR_PAD_RIGHT).PHP_EOL);
     echo_style($style, str_repeat(' ', $width).PHP_EOL);
 }
 
