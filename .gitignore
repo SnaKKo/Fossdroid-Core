@@ -11,3 +11,4 @@
 /web/images/icons/*
 !web/images/icons/.gitkeep
 /nbproject/
+/composer.lock
