@@ -20,7 +20,7 @@ This repo is the open source version of [Fossdroid.com](https://fossdroid.com).
 2. Create database
 3. Install dependencies and change the "melodycode_fossdroid.local_path_icons" attribute:
     ```
-    composer update
+    composer install
     ```
 4. Create schema:
     ```
