@@ -119,8 +119,8 @@ class SyncCommand extends ContainerAwareCommand {
                     }
 
                     $application_obj->setName($application_xml->name);
-                    $application_obj->setSummary($application_xml->summary);
-                    $application_obj->setDescription($application_xml->desc);
+                    $application_obj->setSummary($utils->clearInvalidUTF8($application_xml->summary));
+                    $application_obj->setDescription($utils->clearInvalidUTF8($application_xml->desc));
                     $application_obj->setSite($application_xml->web);
                     $application_obj->setSource($application_xml->source);
                     $application_obj->setTracker($application_xml->tracker);
